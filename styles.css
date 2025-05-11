@@ -1,0 +1,412 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    color: #ffd700;
+    margin-bottom: 10px;
+    font-family: 'Trek', 'Arial', sans-serif;
+    letter-spacing: 2px;
+}
+
+.game-info {
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #aaa;
+}
+
+.game-board {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tongo-table {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.outer-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #006400;
+    border: 5px solid #444;
+}
+
+.inner-ring {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    border-radius: 50%;
+    background-color: #8b0000;
+    border: 5px solid #444;
+}
+
+.pot {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    top: 35%;
+    left: 35%;
+    border-radius: 50%;
+    background-color: #333;
+    border: 3px solid #ffd700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffd700;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#sections-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.section {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform-origin: bottom right;
+}
+
+.card {
+    width: 70px;
+    height: 100px;
+    background-color: #222;
+    border-radius: 5px;
+    border: 2px solid #555;
+    margin: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card.selected {
+    border-color: #ffd700;
+    box-shadow: 0 0 10px #ffd700;
+}
+
+.card.asset {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.card.acquire {
+    background-color: #333;
+    color: #ffd700;
+}
+
+.card.red { background-color: #8b0000; }
+.card.blue { background-color: #00008b; }
+.card.yellow { background-color: #8b8b00; }
+.card.green { background-color: #006400; }
+.card.purple { background-color: #4b0082; }
+.card.orange { background-color: #8b4500; }
+.card.black { background-color: #000; }
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    min-height: 110px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.player-area, .opponents-area {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.game-status {
+    flex: 1;
+    min-width: 200px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.action-buttons {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.risk-controls {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+button {
+    background-color: #444;
+    color: #e0e0e0;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover:not(:disabled) {
+    background-color: #555;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#start-game {
+    background-color: #006400;
+    color: white;
+    font-weight: bold;
+}
+
+#confront-button {
+    background-color: #8b0000;
+}
+
+#retreat-button {
+    background-color: #8b4500;
+}
+
+input[type="number"] {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    padding: 5px;
+    border-radius: 3px;
+    width: 80px;
+}
+
+.opponent {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.opponent-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #555;
+    border-radius: 50%;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.opponent-info {
+    flex: 1;
+}
+
+.opponent-cards {
+    display: flex;
+    margin-left: 20px;
+}
+
+.opponent-card {
+    width: 30px;
+    height: 45px;
+    background-color: #222;
+    border: 1px solid #555;
+    margin-right: 5px;
+}
+
+.game-log {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#log-container {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    padding: 3px 0;
+    border-bottom: 1px solid #444;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #2a2a2a;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+.rules-content {
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+#show-rules {
+    display: block;
+    margin: 20px auto;
+    background-color: #4b0082;
+    color: white;
+    padding: 10px 20px;
+}
+
+/* Add these styles to the existing CSS */
+
+@font-face {
+    font-family: 'Trek';
+    src: url('https://fonts.gstatic.com/s/anton/v15/1Ptgg87LROyAm3K9-C8CSKlvPfE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.current-player {
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 10px #ffd700;
+}
+
+.inactive {
+    opacity: 0.5;
+}
+
+.latinum-display {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.card.bad {
+    background-color: #8b0000;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.section {
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+#risk-button {
+    background-color: #4b0082;
+}
+
+#purchase-button {
+    background-color: #006400;
+}
+
+#sell-button {
+    background-color: #8b4500;
+}
+
+#acquire-button {
+    background-color: #00008b;
+}
+
+.rules-content {
+    line-height: 1.6;
+}
+
+.rules-content h3, .rules-content h4 {
+    color: #ffd700;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.rules-content ul, .rules-content ol {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.rules-content li {
+    margin-bottom: 5px;
+}
